@@ -67,7 +67,7 @@ class Portfolio extends Component{
             if(!this.isOpen(this.connection)) return;
             // this.connection.send(JSON.stringify(subscribe));
             this.connection.send(JSON.stringify({'type':'subscribe', 'symbol':'TSLA'}))
-            // this.connection.send (JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
+            this.connection.send (JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
         },1000)
     }
 
@@ -79,9 +79,11 @@ class Portfolio extends Component{
         return(
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
-                <h1 style={{fontSize: '100px'}}>Dashboard</h1>
-                <h1 style={{fontSize: '100px'}}>{this.state.symbol}</h1>
-                <h2 style={{fontSize: '100px'}}>{ this.state.price }</h2>
+                {/* <h1 style={{fontSize: '50px'}}>Dashboard</h1> */}
+                <h1 style={{fontSize: '100px'}}>{this.state.symbols[0]}</h1>
+                <h1 style={{fontSize: '75px'}}>{ this.state.msftPrices.slice(-1) }</h1>
+                <h1 style={{fontSize: '100px'}}>{this.state.symbols[1]}</h1>
+                <h2 style={{fontSize: '75px'}}> {this.state.tslaPrices.slice(-1)}</h2>
             </div>
         );
     }
