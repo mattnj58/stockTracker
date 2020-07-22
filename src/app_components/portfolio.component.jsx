@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
+import './portfolio.css';
 const stocksURL = 'wss://ws.finnhub.io?token=bs3tkvnrh5rbsfggfo6g';
 // const tiingo='wss://api.tiingo.com/iex'
 
@@ -79,11 +82,19 @@ class Portfolio extends Component{
         return(
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
-                {/* <h1 style={{fontSize: '50px'}}>Dashboard</h1> */}
-                <h1 style={{fontSize: '100px'}}>{this.state.symbols[0]}</h1>
-                <h1 style={{fontSize: '75px'}}>{ this.state.msftPrices.slice(-1) }</h1>
-                <h1 style={{fontSize: '100px'}}>{this.state.symbols[1]}</h1>
-                <h2 style={{fontSize: '75px'}}> {this.state.tslaPrices.slice(-1)}</h2>
+                <h1 className='app_header'>Dashboard</h1>
+                <CardDeck>
+                    <Card text={'white'} style={{backgroundColor:'#3700b3', fontSize:'100px', width:'50rem', margin:'auto', height:'300px'}}>
+                        <Card.Title style={{fontSize:'100px'}}>{this.state.symbols[0]}</Card.Title>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
+                        <Card.Text>{this.state.msftPrices.slice(-1)}</Card.Text>
+                    </Card>
+                    <Card text={'white'} style={{backgroundColor:'#3700b3', fontSize:'100px',width:'50rem', margin:'auto', height:'300px'}}>
+                        <Card.Title style={{fontSize: '100px'}}>{this.state.symbols[1]}</Card.Title>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $640.11</Card.Subtitle>
+                        <Card.Text>{this.state.tslaPrices.slice(-1)}</Card.Text>
+                    </Card>
+                </CardDeck>
             </div>
         );
     }
