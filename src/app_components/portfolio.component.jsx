@@ -84,12 +84,12 @@ class Portfolio extends Component{
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
                 <h1 className='app_header'>Dashboard</h1>
                 <CardDeck>
-                    <Card text={'white'} style={{backgroundColor:'#3700b3', fontSize:'100px', width:'50rem', margin:'auto', height:'300px'}}>
+                    <Card text={'white'} style={{backgroundColor:'#6200ee', fontSize:'100px', width:'50rem', margin:'auto', height:'350px'}}>
                         <Card.Title style={{fontSize:'100px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
                         <Card.Text>{this.state.msftPrices.slice(-1)}</Card.Text>
                     </Card>
-                    <Card text={'white'} style={{backgroundColor:'#3700b3', fontSize:'100px',width:'50rem', margin:'auto', height:'300px'}}>
+                    <Card text={'white'} style={{backgroundColor:'#6200ee', fontSize:'100px',width:'50rem', margin:'auto', height:'350px'}}>
                         <Card.Title style={{fontSize: '100px'}}>{this.state.symbols[1]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $640.11</Card.Subtitle>
                         <Card.Text>{this.state.tslaPrices.slice(-1)}</Card.Text>
