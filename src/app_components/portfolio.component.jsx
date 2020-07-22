@@ -23,8 +23,10 @@ class Portfolio extends Component{
             symbols: ['MSFT','TSLA'],
             symbol:[],
             price: [],
-            msftPrices:[],
-            tslaPrices: [],
+            msftPrices:['-'],
+            msftChange:[0],
+            tslaPrices: ['-'],
+            tslaChange:[0],
             messages: []
         }
     }
@@ -42,12 +44,15 @@ class Portfolio extends Component{
                 p = packet.data[0].p;
                 if(sym==="MSFT"){
                     this.setState({
-                        msftPrices: this.state.msftPrices.concat([p])
+                        msftPrices: this.state.msftPrices.concat(p),
+                        msftChange: this.state.msftPrices.concat(this.diff(p,210))
                     })
                 } else if(sym==="TSLA"){
                     this.setState({
-                        tslaPrices: this.state.tslaPrices.concat([p])
+                        tslaPrices: this.state.tslaPrices.concat([p]),
+                        tslaChange: this.state.tslaChange.concat(this.diff(p,1280.22))
                     })
+                    console.log(packet)
                 }
 
                 // console.log(this.state.msftPrices)
@@ -78,21 +83,35 @@ class Portfolio extends Component{
         return ws.readyState === ws.OPEN
     }
 
+    diff(price){
+        // var value = (price-210.15).toFixed(2);
+        return (price-210.15).toFixed(2);
+    }
+
     render(){
         return(
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
-                <h1 className='app_header'>Dashboard</h1>
                 <CardDeck>
-                    <Card text={'white'} style={{backgroundColor:'#6200ee', fontSize:'100px', width:'50rem', margin:'auto', height:'350px'}}>
+                    <Card text={'white'} style={{backgroundColor: '#6200ee',fontSize:'100px', width:'18rem', margin:'3rem', height:'auto'}}>
                         <Card.Title style={{fontSize:'100px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
-                        <Card.Text>{this.state.msftPrices.slice(-1)}</Card.Text>
+                        <Card.Text>
+                            <p style={{fontSize: '30px'}}>Currently Traded Price</p>
+                            <p>${this.state.msftPrices.slice(-1)}</p>
+                            <p style={{fontSize: '30px'}}>Total Gain/Loss</p>
+                            <p>${this.state.msftChange.slice(-1)}</p>
+                        </Card.Text>
                     </Card>
-                    <Card text={'white'} style={{backgroundColor:'#6200ee', fontSize:'100px',width:'50rem', margin:'auto', height:'350px'}}>
+                    <Card text={'white'} style={{backgroundColor:'#6f33c2', fontSize:'100px', width:'18rem', margin:'3rem', height:'auto'}}>
                         <Card.Title style={{fontSize: '100px'}}>{this.state.symbols[1]}</Card.Title>
-                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $640.11</Card.Subtitle>
-                        <Card.Text>{this.state.tslaPrices.slice(-1)}</Card.Text>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $1280.22</Card.Subtitle>
+                        <Card.Text>
+                            <p style={{fontSize: '30px'}}>Currently Traded Price</p>
+                            <p>${this.state.tslaPrices.slice(-1)}</p>
+                            <p style={{fontSize: '30px'}}>Total Gain/Loss</p>
+                            <p>${this.state.tslaChange.slice(-1)}</p>
+                        </Card.Text>
                     </Card>
                 </CardDeck>
             </div>

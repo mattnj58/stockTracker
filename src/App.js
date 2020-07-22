@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar'
 
 import Portfolio from './app_components/portfolio.component';
 import Search from './app_components/search.componenet';
@@ -19,12 +20,6 @@ class App extends Component {
     return(
       <Router>
         <div className = "App">
-        <link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-  crossorigin="anonymous"
-/>
           {/* <div className = "App-header">
             <Link to='/'>Dashboard</Link>
             <Link to='/Search'>Search</Link>
@@ -33,6 +28,12 @@ class App extends Component {
             <Route exact path='/'></Route>
             <Route exact path='/Search' component={Search}></Route>
           </Switch> */}
+          
+          <Navbar variant='dark' style={{backgroundColor:'#3700b3', fontSize:"50px"}}>
+              <Navbar.Brand>
+                <Link to='/' style={{color:"white"}}>Stock Viewer</Link>
+              </Navbar.Brand>
+            </Navbar>
           <Portfolio/>
         </div>
       </Router>
