@@ -83,9 +83,9 @@ class Portfolio extends Component{
         return ws.readyState === ws.OPEN
     }
 
-    diff(price){
-        // var value = (price-210.15).toFixed(2);
-        return (price-210.15).toFixed(2);
+    diff(price,ogPrice){
+        
+        return (price-ogPrice).toFixed(2);
     }
 
     render(){
