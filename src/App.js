@@ -29,9 +29,9 @@ class App extends Component {
             <Route exact path='/Search' component={Search}></Route>
           </Switch> */}
           
-          <Navbar variant='dark' style={{backgroundColor:'#3700b3', fontSize:"50px"}}>
+          <Navbar variant='dark' style={{backgroundColor:'#3700b3'}}>
               <Navbar.Brand>
-                <Link to='/' style={{color:"white"}}>Stock Viewer</Link>
+                <Link to='/' style={{color:"white", fontSize:"50px"}}>Stock Viewer</Link>
               </Navbar.Brand>
             </Navbar>
           <Portfolio/>
