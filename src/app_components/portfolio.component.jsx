@@ -10,8 +10,10 @@ class Portfolio extends Component{
             symbols: ['MSFT','TSLA'],
             msftPrices:['n/a'],
             msftChange:[0],
+            msftPct:[0],
             tslaPrices: ['n/a'],
-            tslaChange:[0]
+            tslaChange:[0],
+            tslaPct:[0]
         }
     }
 
@@ -28,12 +30,14 @@ class Portfolio extends Component{
                 if(sym==="MSFT"){
                     this.setState({
                         msftPrices: this.state.msftPrices.concat(p),
-                        msftChange: this.state.msftPrices.concat(this.diff(p,210))
+                        msftChange: this.state.msftPrices.concat(this.diff(p,210)),
+                        msftPct: this.state.msftPct.concat(this.pctChange(p,210))
                     })
                 } else if(sym==="TSLA"){
                     this.setState({
                         tslaPrices: this.state.tslaPrices.concat(p),
-                        tslaChange: this.state.tslaChange.concat(this.diff(p,1280.22))
+                        tslaChange: this.state.tslaChange.concat(this.diff(p,1280.22)),
+                        tslaPct: this.state.tslaPct.concat(this.pctChange(p,1280.22))
                     })
                 }
             }
@@ -50,9 +54,13 @@ class Portfolio extends Component{
         return ws.readyState === ws.OPEN
     }
 
-    diff(price,ogPrice){
+    diff(price, ogPrice){
         
         return (price-ogPrice).toFixed(2);
+    }
+
+    pctChange(price, ogPrice){
+        return ((100*((price-ogPrice)/ogPrice)).toFixed(2));
     }
 
     render(){
@@ -60,24 +68,26 @@ class Portfolio extends Component{
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
                 <CardDeck>
-                    <Card text={'black'} style={{backgroundColor: '#00c853',fontSize:'100px', width:'5rem', margin:'3rem', height:'350'}}>
-                        <Card.Title style={{fontSize:'100px'}}>{this.state.symbols[0]}</Card.Title>
+                    <Card text={'black'} style={{backgroundColor: '#00c853',fontSize:'90px', width:'5rem', margin:'3rem', height:'350'}}>
+                        <Card.Title style={{fontSize:'90px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
                         <Card.Text>
-                            <p style={{fontSize: '30px'}}>Currently Traded Price</p>
+                            <p style={{fontSize: '40px'}}>Currently Traded Price</p>
                             <p>${this.state.msftPrices.slice(-1)}</p>
-                            <p style={{fontSize: '30px'}}>Total Gain/Loss</p>
+                            <p style={{fontSize: '40px'}}>Total Gain/Loss</p>
                             <p>${this.state.msftChange.slice(-1)}</p>
+                            <p>{this.state.msftPct.slice(-1)}&#37;</p>
                         </Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#78ff82', fontSize:'100px', width:'10px', margin:'3rem', height:'350'}}>
-                        <Card.Title style={{fontSize: '100px'}}>{this.state.symbols[1]}</Card.Title>
+                    <Card text={'black'} style={{backgroundColor:'#78ff82', fontSize:'90px', width:'10px', margin:'3rem', height:'350'}}>
+                        <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[1]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $1280.22</Card.Subtitle>
                         <Card.Text>
                             <p style={{fontSize: '30px'}}>Currently Traded Price</p>
                             <p>${this.state.tslaPrices.slice(-1)}</p>
                             <p style={{fontSize: '30px'}}>Total Gain/Loss</p>
                             <p>${this.state.tslaChange.slice(-1)}</p>
+                            <p>{this.state.tslaPct.slice(-1)}&#37;</p>
                         </Card.Text>
                     </Card>
                 </CardDeck>

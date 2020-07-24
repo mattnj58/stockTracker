@@ -35,10 +35,9 @@ class App extends Component {
             <Route exact path='/'></Route>
             <Route exact path='/Search' component={Search}></Route>
           </Switch> */}
-          
           <Navbar variant='dark' style={{backgroundColor:'#009624', margin:'auto', width:'auto'}}>
               <Navbar.Brand>
-                <Link to='mattnj58.github.io/stockTracker' style={{color:"black", fontSize:"50px"}}>Stock Viewer</Link>
+                <Link to='mattnj58.github.io/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</Link>
               </Navbar.Brand>
               <Form inline onSubmit={this.handleSubmit}>
                 <FormControl type='text' placeholder='Search' className='mr-sm-2'/>
