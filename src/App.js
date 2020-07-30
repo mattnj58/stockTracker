@@ -3,24 +3,30 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 
 import Portfolio from './app_components/portfolio.component';
-import Search from './app_components/search.componenet';
-import { InputGroup, Form, FormControl } from 'react-bootstrap';
-// import Dashboard from './app_components/dashboard.component';
+import Search from './app_components/search.component';
+// import { Form, FormControl } from 'react-bootstrap';
 
 require('dotenv').config();
 //import Search from './app_components/search.componenet';
 
 class App extends Component {
   state = {
-    ticker:""
+    ticker:"",
+    redirect:null
   }
-  
+
+  handleChange(event){
+    this.setState({ticker: event.target.value})
+  }
+
   handleSubmit(event){
-    this.setState({ticker: this.event.target.ticker})
-    console.log("this button has been clicked")
+    event.preventDefault();
+    console.log(this.state.ticker);
+    // alert(this.state.ticker);
+    this.context.router.history.push('/Submit');
   }
 
   render(){
@@ -30,8 +36,8 @@ class App extends Component {
           {/* <div className = "App-header">
             <Link to='/'>Dashboard</Link>
             <Link to='/Search'>Search</Link>
-          </div> */}
-          {/* <Switch>
+          </div>
+          <Switch>
             <Route exact path='/'></Route>
             <Route exact path='/Search' component={Search}></Route>
           </Switch> */}
@@ -39,15 +45,19 @@ class App extends Component {
               <Navbar.Brand>
                 <Link to='mattnj58.github.io/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</Link>
               </Navbar.Brand>
-              <Form inline onSubmit={this.handleSubmit}>
-                <FormControl type='text' placeholder='Search' className='mr-sm-2'/>
-                <Button type="submit">Submit</Button>
-              </Form>
+              {/* <form inline onSubmit={this.handleSubmit.bind(this)}>
+                <input type='text' placeholder='Search' className='mr-sm-2' value={this.state.ticker} onChange={this.handleChange.bind(this)}/>
+                <button type='submit'>Submit</button>
+              </form> */}
+            <Link to='/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
+            <Switch>
+              <Route exact path='/Search' component={Search}></Route>
+            </Switch>
             </Navbar>
           <Portfolio/>
         </div>
       </Router>
-    );
+      );
   }
 }
 

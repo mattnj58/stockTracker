@@ -45,8 +45,8 @@ class Portfolio extends Component{
 
         setInterval( _ => {
             if(!this.isOpen(this.connection)) return;
-            this.connection.send(JSON.stringify({'type':'subscribe', 'symbol':'TSLA'}))
-            this.connection.send (JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
+            // this.connection.send(JSON.stringify({'type':'subscribe', 'symbol':'TSLA'}))
+            // this.connection.send (JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
         },1000)
     }
 
@@ -71,24 +71,20 @@ class Portfolio extends Component{
                     <Card text={'black'} style={{backgroundColor: '#00c853',fontSize:'90px', width:'5rem', margin:'3rem', height:'350'}}>
                         <Card.Title style={{fontSize:'90px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
-                        <Card.Text>
-                            <p style={{fontSize: '40px'}}>Currently Traded Price</p>
-                            <p>${this.state.msftPrices.slice(-1)}</p>
-                            <p style={{fontSize: '40px'}}>Total Gain/Loss</p>
-                            <p>${this.state.msftChange.slice(-1)}</p>
-                            <p>{this.state.msftPct.slice(-1)}&#37;</p>
-                        </Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
+                        <Card.Text>${this.state.msftPrices.slice(-1)}</Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss</Card.Text>
+                        <Card.Text>${this.state.msftChange.slice(-1)}</Card.Text>
+                        <Card.Text>{this.state.msftPct.slice(-1)}&#37;</Card.Text>
                     </Card>
                     <Card text={'black'} style={{backgroundColor:'#78ff82', fontSize:'90px', width:'10px', margin:'3rem', height:'350'}}>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[1]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $1280.22</Card.Subtitle>
-                        <Card.Text>
-                            <p style={{fontSize: '30px'}}>Currently Traded Price</p>
-                            <p>${this.state.tslaPrices.slice(-1)}</p>
-                            <p style={{fontSize: '30px'}}>Total Gain/Loss</p>
-                            <p>${this.state.tslaChange.slice(-1)}</p>
-                            <p>{this.state.tslaPct.slice(-1)}&#37;</p>
-                        </Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
+                        <Card.Text>${this.state.tslaPrices.slice(-1)}</Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss</Card.Text>
+                        <Card.Text>${this.state.tslaChange.slice(-1)}</Card.Text>
+                        <Card.Text>{this.state.tslaPct.slice(-1)}&#37;</Card.Text>
                     </Card>
                 </CardDeck>
             </div>
