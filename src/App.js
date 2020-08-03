@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
+import {NavLink} from 'react-bootstrap'
 // import Button from 'react-bootstrap/Button';
 
 import Portfolio from './app_components/portfolio.component';
@@ -43,18 +44,20 @@ class App extends Component {
           </Switch> */}
           <Navbar variant='dark' style={{backgroundColor:'#009624', margin:'auto', width:'auto'}}>
               <Navbar.Brand>
-                <Link to='mattnj58.github.io/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</Link>
+                <NavLink to='/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</NavLink>
               </Navbar.Brand>
               {/* <form inline onSubmit={this.handleSubmit.bind(this)}>
                 <input type='text' placeholder='Search' className='mr-sm-2' value={this.state.ticker} onChange={this.handleChange.bind(this)}/>
                 <button type='submit'>Submit</button>
               </form> */}
-            <Link to='/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
-            <Switch>
-              <Route exact path='/Search' component={Search}></Route>
-            </Switch>
+            {/* <Link to='/'>Home</Link> */}
+            <Link to='/stockTracker/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
             </Navbar>
-          <Portfolio/>
+            <Switch>
+              <Route path='/' component={Portfolio}/>
+              <Route path='/stockTracker/Search' component={Search}></Route>
+            </Switch>
+          {/* <Portfolio/> */}
         </div>
       </Router>
       );
