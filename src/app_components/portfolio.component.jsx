@@ -34,7 +34,7 @@ class Portfolio extends Component{
                 if(sym==="MSFT"){
                     this.setState({
                         msftPrices: p,
-                        msftChange: this.diff(p,210),
+                        msftChange: this.diff(p,210.15),
                         msftPct: this.pctChange(p,210)
                     })
                 } else if(sym==="TSLA"){
