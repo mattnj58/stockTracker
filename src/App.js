@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import {NavLink} from 'react-bootstrap'
-// import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 
 import Portfolio from './app_components/portfolio.component';
 import Search from './app_components/search.component';
@@ -12,8 +12,8 @@ import Search from './app_components/search.component';
 
 require('dotenv').config();
 //import Search from './app_components/search.componenet';
-
 class App extends Component {
+
   state = {
     ticker:"",
     redirect:null
@@ -28,6 +28,10 @@ class App extends Component {
     console.log(this.state.ticker);
     // alert(this.state.ticker);
     this.context.router.history.push('/Submit');
+  }
+
+  handleClick(event){
+    this.state.history.push("/stockTracker/Search");
   }
 
   render(){
@@ -51,12 +55,13 @@ class App extends Component {
                 <button type='submit'>Submit</button>
               </form> */}
             {/* <Link to='/'>Home</Link> */}
-            <Link to='/stockTracker/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
-            </Navbar>
+            {/* <Link to='/stockTracker/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
             <Switch>
               <Route path='/' component={Portfolio}/>
               <Route path='/stockTracker/Search' component={Search}></Route>
-            </Switch>
+            </Switch> */}
+            <Button onClick={this.handleClick}>Search</Button>
+            </Navbar>
           {/* <Portfolio/> */}
         </div>
       </Router>

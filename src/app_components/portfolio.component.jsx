@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
+import './portfolio.css'
 const stocksURL = 'wss://ws.finnhub.io?token=bs3tkvnrh5rbsfggfo6g';
 
 class Portfolio extends Component{
@@ -8,13 +9,13 @@ class Portfolio extends Component{
         super(props)
         this.state = {
             symbols: ['MSFT','TSLA', 'AAPL'],
-            msftPrices:['n/a'],
+            msftPrices:['N/A'],
             msftChange:[0],
             msftPct:[0],
-            tslaPrices: ['n/a'],
+            tslaPrices: ['N/A'],
             tslaChange:[0],
             tslaPct:[0],
-            aaplPrices:['n/a'],
+            aaplPrices:['N/A'],
             aaplChange:[0],
             aaplPct:[0]
         }
@@ -27,28 +28,29 @@ class Portfolio extends Component{
 
         this.connection.onmessage = evt => {
             var packet = JSON.parse(evt.data);
-            // console.log(packet)
             if(packet.type === "trade"){
                 sym = packet.data[0].s;
                 p = packet.data[0].p.toFixed(2);
                 if(sym==="MSFT"){
                     this.setState({
-                        msftPrices: this.state.msftPrices.concat(p),
-                        msftChange: this.state.msftPrices.concat(this.diff(p,210)),
-                        msftPct: this.state.msftPct.concat(this.pctChange(p,210))
+                        msftPrices: p,
+                        msftChange: this.diff(p,210),
+                        msftPct: this.pctChange(p,210)
                     })
                 } else if(sym==="TSLA"){
                     this.setState({
-                        tslaPrices: this.state.tslaPrices.concat(p),
-                        tslaChange: this.state.tslaChange.concat(this.diff(p,1280.22)),
-                        tslaPct: this.state.tslaPct.concat(this.pctChange(p,1280.22))
+                        tslaPrices: p,
+                        tslaChange: this.diff(p,1280.22),
+                        tslaPct: this.pctChange(p,1280.22)
                     })
                 } else if(sym==='AAPL'){
                     this.setState({
-                        aaplPrices:this.state.aaplPrices.concat(p),
-                        aaplChange:this.state.aaplChange.concat(this.diff(p,442.56)),
-                        aaplPct: this.state.aaplPct.concat(this.pctChange(p,442.56))
+                        aaplPrices: p,
+                        aaplChange: this.diff(p,442.56),
+                        aaplPct: this.pctChange(p,442.56)
                     })
+                } else {
+                    console.log(packet);
                 }
             }
         };
@@ -82,33 +84,33 @@ class Portfolio extends Component{
         return(
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
-                <CardDeck>
-                    <Card text={'black'} style={{backgroundColor: '#00c853',fontSize:'90px', width:'5rem', margin:'3rem', height:'350'}}>
+                <CardDeck className='m-3'>
+                    <Card text={'black'} style={{backgroundColor: '#00c853'}} className='stockCard'>
                         <Card.Title style={{fontSize:'90px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
-                        <Card.Text>${this.state.msftPrices.slice(-1)}</Card.Text>
-                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss</Card.Text>
-                        <Card.Text>${this.state.msftChange.slice(-1)}</Card.Text>
-                        <Card.Text>{this.state.msftPct.slice(-1)}&#37;</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>${this.state.msftPrices}</Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>${this.state.msftChange}</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>{this.state.msftPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#78ff82', fontSize:'90px', width:'10px', margin:'3rem', height:'350'}}>
+                    <Card text={'black'} style={{backgroundColor:'#78ff82'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[1]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $1280.22</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
-                        <Card.Text>${this.state.tslaPrices.slice(-1)}</Card.Text>
-                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss</Card.Text>
-                        <Card.Text>${this.state.tslaChange.slice(-1)}</Card.Text>
-                        <Card.Text>{this.state.tslaPct.slice(-1)}&#37;</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>${this.state.tslaPrices}</Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>${this.state.tslaChange}</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>{this.state.tslaPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#78ff82', fontSize:'90px', width:'10px', margin:'3rem', height:'350'}}>
+                    <Card text={'black'} style={{backgroundColor:'#78ffaa'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[2]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $442.56</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
-                        <Card.Text>${this.state.aaplPrices.slice(-1)}</Card.Text>
-                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss</Card.Text>
-                        <Card.Text>${this.state.aaplChange.slice(-1)}</Card.Text>
-                        <Card.Text>{this.state.aaplPct.slice(-1)}&#37;</Card.Text>
+                        <Card.Text style={{fontSize:'100px'}}>${this.state.aaplPrices}</Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>${this.state.aaplChange}</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>{this.state.aaplPct}&#37;</Card.Text>
                     </Card>
                 </CardDeck>
             </div>

@@ -39,6 +39,8 @@ class Search extends Component{
                 console.log(this.state.companyName);
             } else if(call.status===429){
                 alert("You have exceeded the free tier limit, please try again later");
+            } else {
+                alert("Something went wrong, please try again later");
             }
         }
     }
