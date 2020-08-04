@@ -55,14 +55,14 @@ class App extends Component {
                 <button type='submit'>Submit</button>
               </form> */}
             {/* <Link to='/'>Home</Link> */}
-            {/* <Link to='/stockTracker/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
+            <Link to='/stockTracker/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
             <Switch>
-              <Route path='/' component={Portfolio}/>
+              {/* <Route path='/' component={Portfolio}/> */}
               <Route path='/stockTracker/Search' component={Search}></Route>
-            </Switch> */}
+            </Switch>
             <Button onClick={this.handleClick}>Search</Button>
             </Navbar>
-          {/* <Portfolio/> */}
+          <Portfolio/>
         </div>
       </Router>
       );
