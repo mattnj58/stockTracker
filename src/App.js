@@ -48,20 +48,18 @@ class App extends Component {
           </Switch> */}
           <Navbar variant='dark' style={{backgroundColor:'#009624', margin:'auto', width:'auto'}}>
               <Navbar.Brand>
-                <NavLink to='/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</NavLink>
+                <Link to='/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</Link>
               </Navbar.Brand>
               {/* <form inline onSubmit={this.handleSubmit.bind(this)}>
                 <input type='text' placeholder='Search' className='mr-sm-2' value={this.state.ticker} onChange={this.handleChange.bind(this)}/>
                 <button type='submit'>Submit</button>
               </form> */}
-            {/* <Link to='/'>Home</Link> */}
+            </Navbar>
+            
             <Link to='/stockTracker/Search' style={{color:"black", fontSize:"25px"}}>Search</Link>
             <Switch>
-              {/* <Route path='/' component={Portfolio}/> */}
               <Route path='/stockTracker/Search' component={Search}></Route>
             </Switch>
-            <Button onClick={this.handleClick}>Search</Button>
-            </Navbar>
           <Portfolio/>
         </div>
       </Router>

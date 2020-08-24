@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import './portfolio.css'
-const stocksURL = 'wss://ws.finnhub.io?token=bs3tkvnrh5rbsfggfo6g';
+const stocksURL = 'wss://ws.finnhub.io?token=bt1t0a748v6rjbouko1g';
 
 class Portfolio extends Component{
     constructor(props){
@@ -26,8 +26,10 @@ class Portfolio extends Component{
         var sym="";
         var p=0;
 
+        
         this.connection.onmessage = evt => {
             var packet = JSON.parse(evt.data);
+            console.log(packet);
             if(packet.type === "trade"){
                 sym = packet.data[0].s;
                 p = packet.data[0].p.toFixed(2);
@@ -60,7 +62,7 @@ class Portfolio extends Component{
             for(var i=0; i<this.state.symbols.length; i++){
                 this.connection.send(JSON.stringify({'type':'subscribe', 'symbol':this.state.symbols[i]}))
             }
-        },1000)
+        },100)
     }
 
     componentWillUnmount = () =>{
@@ -85,7 +87,7 @@ class Portfolio extends Component{
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
                 <CardDeck className='m-3'>
-                    <Card text={'black'} style={{backgroundColor: '#00c853'}} className='stockCard'>
+                    <Card text={'black'} style={{backgroundColor: '#00c853', width:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize:'90px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
@@ -94,7 +96,7 @@ class Portfolio extends Component{
                         <Card.Text style={{fontSize: '100px'}}>${this.state.msftChange}</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>{this.state.msftPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#78ff82'}} className='stockCard'>
+                    <Card text={'black'} style={{backgroundColor:'#78ff82', width:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[1]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $1280.22</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
@@ -103,7 +105,7 @@ class Portfolio extends Component{
                         <Card.Text style={{fontSize: '100px'}}>${this.state.tslaChange}</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>{this.state.tslaPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#78ffaa'}} className='stockCard'>
+                    <Card text={'black'} style={{backgroundColor:'#78ffaa', width:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[2]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $442.56</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
