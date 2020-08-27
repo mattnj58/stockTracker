@@ -31,8 +31,8 @@ class Search extends Component{
         var tick = e.target.value;
 
         if(tick){
-            const call = await fetch(`${apiBase}${tick}&token=bs3tkvnrh5rbsfggfo6g`);
-            const fund = await fetch(`${fundamentals}${tick}&metric=all&token=bs3tkvnrh5rbsfggfo6g`)
+            const call = await fetch(`${apiBase}${tick}&token=bt1t0a748v6rjbouko1g`);
+            const fund = await fetch(`${fundamentals}${tick}&metric=all&token=bt1t0a748v6rjbouko1g`)
             if(call.status===200 && fund.status===200){
                 const res = await call.json();
                 const fundRes = await fund.json();
