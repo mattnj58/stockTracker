@@ -8,7 +8,7 @@ class Portfolio extends Component{
     constructor(props){
         super(props)
         this.state = {
-            symbols: ['MSFT','TSLA', 'AAPL'],
+            symbols: ['MSFT','TSLA', 'AAPL', 'UPS'],
             msftPrices:['N/A'],
             msftChange:[0],
             msftPct:[0],
@@ -17,7 +17,12 @@ class Portfolio extends Component{
             tslaPct:[0],
             aaplPrices:['N/A'],
             aaplChange:[0],
-            aaplPct:[0]
+            aaplPct:[0],
+            upsPrices:['N/A'],
+            upsChange:[0],
+            upsPct:[0],
+            bought: [210.15, 464.72, 116.35,176.33],
+            
         }
     }
 
@@ -36,20 +41,20 @@ class Portfolio extends Component{
                 if(sym==="MSFT"){
                     this.setState({
                         msftPrices: p,
-                        msftChange: this.diff(p,210.15),
-                        msftPct: this.pctChange(p,210)
+                        msftChange: this.diff(p,this.state.bought[0]),
+                        msftPct: this.pctChange(p,this.state.bought[0])
                     })
                 } else if(sym==="TSLA"){
                     this.setState({
                         tslaPrices: p,
-                        tslaChange: this.diff(p,1280.22),
-                        tslaPct: this.pctChange(p,1280.22)
+                        tslaChange: this.diff(p,this.state.bought[1]),
+                        tslaPct: this.pctChange(p,this.state.bought[1])
                     })
                 } else if(sym==='AAPL'){
                     this.setState({
                         aaplPrices: p,
-                        aaplChange: this.diff(p,442.56),
-                        aaplPct: this.pctChange(p,442.56)
+                        aaplChange: this.diff(p,this.state.bought[2]),
+                        aaplPct: this.pctChange(p,this.state.bought[2])
                     })
                 } else {
                     console.log(packet);
@@ -89,7 +94,7 @@ class Portfolio extends Component{
                 <CardDeck className='m-3'>
                     <Card text={'black'} style={{backgroundColor: '#00c853', width:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize:'90px'}}>{this.state.symbols[0]}</Card.Title>
-                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $210.15</Card.Subtitle>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[0]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>${this.state.msftPrices}</Card.Text>
                         <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
@@ -98,7 +103,7 @@ class Portfolio extends Component{
                     </Card>
                     <Card text={'black'} style={{backgroundColor:'#78ff82', width:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[1]}</Card.Title>
-                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $1280.22</Card.Subtitle>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[1]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>${this.state.tslaPrices}</Card.Text>
                         <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
@@ -107,12 +112,21 @@ class Portfolio extends Component{
                     </Card>
                     <Card text={'black'} style={{backgroundColor:'#78ffaa', width:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[2]}</Card.Title>
-                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: $442.56</Card.Subtitle>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[2]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
                         <Card.Text style={{fontSize:'100px'}}>${this.state.aaplPrices}</Card.Text>
                         <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>${this.state.aaplChange}</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>{this.state.aaplPct}&#37;</Card.Text>
+                    </Card>
+                    <Card text={'black'} style={{backgroundColor:'#78ffaa', width:'auto'}} className='stockCard'>
+                        <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[3]}</Card.Title>
+                        <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[3]}</Card.Subtitle>
+                        <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
+                        <Card.Text style={{fontSize:'100px'}}>${this.state.upsPrices}</Card.Text>
+                        <Card.Text style={{fontSize: '40px'}}>Total Gain/Loss Per Share</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>${this.state.upsChange}</Card.Text>
+                        <Card.Text style={{fontSize: '100px'}}>{this.state.upsPct}&#37;</Card.Text>
                     </Card>
                 </CardDeck>
             </div>
