@@ -56,7 +56,14 @@ class Portfolio extends Component{
                         aaplChange: this.diff(p,this.state.bought[2]),
                         aaplPct: this.pctChange(p,this.state.bought[2])
                     })
-                } else {
+                } else if(sym==="UPS"){
+                    this.setState({
+                        upsPrices: p,
+                        upsChange: this.diff(p,this.state.bought[3]),
+                        upsPct: this.pctChange(p,this.state.bought[3])
+                    })
+                } 
+                else {
                     console.log(packet);
                 }
             }
