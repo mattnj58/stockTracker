@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import {NavLink} from 'react-bootstrap'
-import Button from 'react-bootstrap/Button';
+// import {NavLink} from 'react-bootstrap'
+// import Button from 'react-bootstrap/Button';
 
 import Portfolio from './app_components/portfolio.component';
 import Search from './app_components/search.component';
@@ -46,9 +46,9 @@ class App extends Component {
             <Route exact path='/'></Route>
             <Route exact path='/Search' component={Search}></Route>
           </Switch> */}
-          <Navbar variant='dark' style={{backgroundColor:'#009624', margin:'auto', width:'auto'}}>
+          <Navbar variant='dark' style={{backgroundColor:'#002884'}}>
               <Navbar.Brand>
-                <Link to='/stockTracker' style={{color:"black", fontSize:"25px"}}>Stock Viewer</Link>
+                <Link to='/stockTracker' style={{color:"white", fontSize:"25px"}}>Stock Viewer</Link>
               </Navbar.Brand>
               {/* <form inline onSubmit={this.handleSubmit.bind(this)}>
                 <input type='text' placeholder='Search' className='mr-sm-2' value={this.state.ticker} onChange={this.handleChange.bind(this)}/>

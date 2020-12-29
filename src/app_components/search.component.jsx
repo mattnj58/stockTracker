@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 // import Company from './company.component';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 // import {Link} from 'react-router-dom';
 
 const apiBase = 'https://finnhub.io/api/v1/stock/profile2?symbol=';
@@ -60,7 +60,7 @@ class Search extends Component{
         <div>
             <input type='text' className='m-1' value={this.state.ticker} onChange={(e) => this.getTicker(e)}/>
             <Button onClick={this.search} value={this.state.ticker} className='mb-2'>Submit</Button>
-            <div style={{fontSize: '40px', backgroundColor: '#00c853'}} className='mb-2'>
+            <div style={{fontSize: '40px', backgroundColor: '#3f50b5'}} className='p-5'>
                 <span><img src={this.state.logo} alt='' height='90px' /></span>
                 <span><p>{this.state.companyName}</p></span>
                 <span><p>{this.state.marketCap}</p></span>
