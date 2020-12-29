@@ -99,7 +99,7 @@ class Portfolio extends Component{
             <div>
                 {/* <ul>{ this.state.messages.slice(-1).map( (msg, idx) => <li key={'msg-' + idx }>{ msg }</li> )}</ul> */}
                 <CardDeck className='p-3'>
-                    <Card text={'black'} style={{backgroundColor: '#3f50b5', padding:'auto'}} className='stockCard'>
+                    <Card text={'white'} style={{backgroundColor: '#3f50b5', padding:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize:'90px'}}>{this.state.symbols[0]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[0]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
@@ -108,7 +108,7 @@ class Portfolio extends Component{
                         <Card.Text style={{fontSize: '100px'}}>${this.state.msftChange}</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>{this.state.msftPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#3f50b5', padding:'auto'}} className='stockCard'>
+                    <Card text={'white'} style={{backgroundColor:'#3f50b5', padding:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[1]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[1]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
@@ -117,7 +117,7 @@ class Portfolio extends Component{
                         <Card.Text style={{fontSize: '100px'}}>${this.state.tslaChange}</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>{this.state.tslaPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#3f50b5', padding:'auto'}} className='stockCard'>
+                    <Card text={'white'} style={{backgroundColor:'#3f50b5', padding:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[2]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[2]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
@@ -126,7 +126,7 @@ class Portfolio extends Component{
                         <Card.Text style={{fontSize: '100px'}}>${this.state.aaplChange}</Card.Text>
                         <Card.Text style={{fontSize: '100px'}}>{this.state.aaplPct}&#37;</Card.Text>
                     </Card>
-                    <Card text={'black'} style={{backgroundColor:'#3f50b5', padding:'auto'}} className='stockCard'>
+                    <Card text={'white'} style={{backgroundColor:'#3f50b5', padding:'auto'}} className='stockCard'>
                         <Card.Title style={{fontSize: '90px'}}>{this.state.symbols[3]}</Card.Title>
                         <Card.Subtitle style={{fontSize:'40px'}}>Price bought at: ${this.state.bought[3]}</Card.Subtitle>
                         <Card.Text style={{fontSize: '40px'}}>Currently Traded Price</Card.Text>
